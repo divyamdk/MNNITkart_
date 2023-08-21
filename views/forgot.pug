@@ -1,0 +1,25 @@
+extends base.pug
+block scripts
+    //- script(src='../static/javascripts/index.js')
+    script(src='../static/javascripts/cart.js' defer="defer" async)
+    script(src='../static/javascripts/localItem.js' defer="defer" async)
+block style
+    style
+        include ../static/stylesheets/style.css
+        include ../static/stylesheets/login.css
+        include ../static/stylesheets/styleResponsive.css
+block content
+    div.container-email
+        h1 YouTellWeSell
+        div.container-email-small
+            if(message)
+                h3 #{message}
+            h1 Forgot Password
+            form(action="/api/forgot-password",method="post",class="myForm")
+                div(class="input-field")
+                    i(class="fas fa-envelope")
+                    input(type="email" placeholder="Email",name="email")
+                input(type="submit" value="Submit" class="btn solid") 
+                div(class="para-field")
+                    p 
+                        | For your security,we need to authenticate your request. We will we sending you a link on the email. Please click on it to complete verification.

@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    title MNNIT-kart
+    link(rel="icon" href="/static/images/logo1.png" type="image/png")
+    block scripts
+        script(src='../static/javascripts/cart.js' defer="defer" async)
+        script(src='../static/javascripts/cartnumber.js' defer="defer" async)
+        script(src='../static/javascripts/localItem.js' defer="defer" async)
+    block style
+  body 
+    div.navbar 
+        div.space
+        div.first  
+             div(class="home",onclick="window.location.href='/api/'")
+                H1 MNNITkart
+        div.middle 
+            form(action="/api/search",method="post")
+                div.full-form 
+                    div.full-input 
+                        input(type="text",name="search", id="search",placeholder="Search items here")
+                    button(class="btn-search")
+                        img(src="/static/images/search.png")  
+        div.nav-list 
+            if(user)
+                div(class="dropdown")  
+                    button(class="login-btn") My Account
+                    div(class="dropdown-content")
+                        a(href="/api/profile/"+user.id) My Profile
+                        a(href='/api/myitems/'+user.id) My Items
+                        a(href='/api/logout') Logout
+            else 
+                button(class="login-btn" onclick="window.location.href='/api/login'")
+                    | Login      
+            if(user)           
+                div(class="mycart",onclick="window.location.href='/api/cart'")
+                    img(src="https://img.icons8.com/fluent-systems-filled/48/000000/shopping-cart-loaded.png")
+                    span(class="span-cart")       
+            else 
+                div(class="mycart",onclick="window.location.href='/api/cart'")
+                    img(src="https://img.icons8.com/fluent-systems-filled/48/000000/shopping-cart-loaded.png")
+                    span(class="span-cart-zero")        
+            
+            div(class="dropdown")
+                button(class="login-btn drop-btn") Start Selling
+                div(class="dropdown-content")
+                    a(href="/api/sell") Sell?
+                    a(href="/api/donate") Donate?
+ 
+        div.space          
+    //- div#id01.modal 
+    //-     div.cart-modal 
+    //-         span(onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal") &times
+    //-         h1 My Cart        
+    //-         div.cart-items                      
+    //-         button(class="btn cancel-cart" ,id="cart-cancel") Cancel Cart 
+                                   
+    block content
+    footer#footer
+       |   Copyright © 2022 MNNITkart.com | All rights reserved
+
+    
+    
+
+    

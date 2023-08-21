@@ -1,0 +1,21 @@
+extends base.pug
+block scripts
+    //- script(src='../static/javascripts/index.js')
+    script(src='../static/javascripts/cart.js' defer="defer" async)
+    script(src='../static/javascripts/localItem.js' defer="defer" async)
+block style
+    style
+        include ../static/stylesheets/style.css
+        include ../static/stylesheets/styleContact.css
+        include ../static/stylesheets/styleResponsive.css
+block content
+    div.container
+        h1 Contact Us
+        form(action="/api/contact",method="post",class="myForm")
+            input(type="text", class="myInput", name="name", placeholder="Enter your name" required)
+            input(type="phone", class="myInput", name="phone", placeholder="Enter your phone number" required)
+            input(type="email", class="myInput", name="email", placeholder="Enter your email id" required)
+            input(type="text", class="myInput", name="address", placeholder="Enter your address" required)
+            input(type="text", class="myInput", name="desc", placeholder="Enter your concern" required)
+            button(class="btn")
+                | Save
